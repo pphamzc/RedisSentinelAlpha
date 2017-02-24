@@ -34,7 +34,8 @@ namespace RedisSentinelAlpha
 
 
             //var sentinelHosts = new[] { "somredis01.zerochaos.local:26379","somredis02.zerochaos.local:26379","somredis03.zerochaos.local:26379" };
-            var sentinelHosts = new[] { "supredis01.zdev.local" };
+            var sentinelHosts = new[] { "supdevredis01.zcdev.local:26379", "supdevredis01.zcdev.local:26380", "supdevredis01.zcdev.local:26381" };
+            //var sentinelHosts = new[] { "supredis01.zcdev.local:26379", "supredis01.zcdev.local:26380", "supredis01.zcdev.local:26381" };
             var sentinel = new RedisSentinel(sentinelHosts, masterName: "zcredismaster");
 
             if (redisManager != null)

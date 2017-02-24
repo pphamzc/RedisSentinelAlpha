@@ -53,6 +53,7 @@ namespace RedisSentinelAlpha
 
                 using (IRedisClient client = pooledCon.GetClient())
                 {
+                    txbOutput.Text += "Use Main/Write Connection : " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff") + Environment.NewLine;
                     txbOutput.Text += "Start Write : " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff") + Environment.NewLine;
                     client.Set<string>("Food", textBox1.Text, DateTime.UtcNow.AddSeconds(21600));
                     client.Add<string>("Food_Add", textBox1.Text, DateTime.UtcNow.AddSeconds(21600));
@@ -62,7 +63,7 @@ namespace RedisSentinelAlpha
 
                 using (IRedisClient client = pooledCon.GetReadOnlyClient())
                 {
-                   
+                    txbOutput.Text += "Use Read Only Connection : " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff") + Environment.NewLine;
                     txbOutput.Text += "Getting Food" + Environment.NewLine;
                     txbOutput.Text += client.Get<string>("Food") + Environment.NewLine;
                 }
